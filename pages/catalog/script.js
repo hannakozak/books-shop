@@ -1,3 +1,5 @@
+import { popupModal } from "../../scripts/popup.js";
+
 const fetchBooks = fetch("../../books.json")
   .then((response) => {
     return response.json();
@@ -10,9 +12,10 @@ const fetchBooks = fetch("../../books.json")
 const renderBooks = (data) => {
   let fragment = new DocumentFragment();
 
-  data.map((book) => {
+  data.map((book, id) => {
     const card = document.createElement("div");
     card.setAttribute("class", "card");
+    card.setAttribute("id", id);
 
     const title = document.createElement("h2");
     title.textContent = book.title;
@@ -32,6 +35,14 @@ const renderBooks = (data) => {
     const showMoreButton = document.createElement("button");
     showMoreButton.textContent = "show more";
     showMoreButton.setAttribute("class", "button-primary");
+    showMoreButton.dataset.open = `modal-${id}`;
+
+    const modal = popupModal(book, id);
+
+    showMoreButton.addEventListener("click", function () {
+      modal.style.display = "block";
+    });
+    card.appendChild(modal);
 
     const addToCardButton = document.createElement("button");
     addToCardButton.textContent = "add to card";
