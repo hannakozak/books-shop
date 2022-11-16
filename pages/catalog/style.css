@@ -1,3 +1,18 @@
+.button-primary {
+  padding: 10px 20px;
+  background-color: var(--blue-primary);
+  color: var(--white);
+  border-radius: 5px;
+  border: none;
+}
+
+.button-primary:hover {
+  color: var(--white);
+  background-color: var(--blue-secondary);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
 header {
   width: 100%;
   display: flex;
@@ -86,4 +101,43 @@ ul {
   justify-content: center;
   gap: 2rem;
   margin: 3rem 0;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  margin: 15% auto;
+  width: 50%;
+  min-height: 40%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+
+.modal-header h2 {
+  color: var(--blue-primary);
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.modal-header button {
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  right: 0;
 }
