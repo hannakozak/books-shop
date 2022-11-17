@@ -1,4 +1,20 @@
 import { popupModal } from "../../scripts/popup.js";
+import { generateBasket } from "../../scripts/basket.js";
+
+let basketItems = JSON.parse(window.localStorage.getItem("order")) || [];
+
+const addToCard = (book, id) => {
+  let search = basketItems.find((x) => x.id === id);
+  if (search === undefined) {
+    basketItems = [...basketItems, { id: id, title: book.title, author: book.author, price: book.price, quantity: 1 }];
+  } else {
+    search.quantity += 1;
+  }
+  console.log(search);
+  localStorage.setItem("order", JSON.stringify(basketItems));
+  location.reload();
+  console.log(basketItems);
+};
 
 const fetchBooks = fetch("../../books.json")
   .then((response) => {
@@ -48,6 +64,10 @@ const renderBooks = (data) => {
     addToCardButton.textContent = "add to card";
     addToCardButton.setAttribute("class", "button-primary");
 
+    addToCardButton.addEventListener("click", () => {
+      addToCard(book, id);
+    });
+
     const buttonsAction = document.createElement("div");
     buttonsAction.setAttribute("class", "buttons-action");
     buttonsAction.appendChild(showMoreButton);
@@ -90,13 +110,26 @@ logoIcon.setAttribute("alt", "logo icon");
 logoIcon.setAttribute("class", "logo-icon");
 logo.appendChild(logoIcon);
 
-const basket = document.createElement("li");
-basket.setAttribute("class", "nav__item");
+const basketNav = document.createElement("li");
+basketNav.setAttribute("class", "nav__item");
 const basketIcon = document.createElement("img");
 basketIcon.setAttribute("src", "../../assets/icons/basket-shopping-solid.svg");
 basketIcon.setAttribute("alt", "basket icon");
 basketIcon.setAttribute("class", "basket-icon");
-basket.appendChild(basketIcon);
+
+const basketLabel = document.createElement("h2");
+basketLabel.setAttribute("class", "basket-label");
+basketLabel.textContent = basketItems.length;
+
+basketNav.appendChild(basketLabel);
+basketNav.appendChild(basketIcon);
+
+const basket = generateBasket();
+
+basketNav.addEventListener("click", function () {
+  basket.style.display = "block";
+});
+header.appendChild(basket);
 
 const headerTitle = document.createElement("h2");
 headerTitle.classList.add("header__title");
@@ -104,7 +137,7 @@ headerTitle.innerHTML = "Welcome to amazing book shop!";
 
 ul.appendChild(home);
 ul.appendChild(logo);
-ul.appendChild(basket);
+ul.appendChild(basketNav);
 
 navigation.appendChild(ul);
 header.appendChild(navigation);

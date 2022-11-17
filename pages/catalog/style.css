@@ -141,3 +141,68 @@ ul {
   top: 0;
   right: 0;
 }
+
+.basket-wrapper {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  right: 0rem;
+  top: 0rem;
+  height: 100%;
+  width: 40%;
+  overflow: auto;
+  background-color: var(--white);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+
+.basket-content {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.basket-card {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--blue-primary);
+}
+
+.basket-icon {
+  position: relative;
+}
+
+.basket-label {
+  position: absolute;
+  top: 3rem;
+  right: 3.5rem;
+  color: var(--blue-secondary);
+  font-size: 2rem;
+}
+
+.basket-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.basket-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
