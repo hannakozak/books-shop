@@ -10,10 +10,8 @@ const addToCard = (book, id) => {
   } else {
     search.quantity += 1;
   }
-  console.log(search);
   localStorage.setItem("order", JSON.stringify(basketItems));
   location.reload();
-  console.log(basketItems);
 };
 
 const fetchBooks = fetch("../../books.json")
