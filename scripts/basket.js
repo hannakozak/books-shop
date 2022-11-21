@@ -39,14 +39,29 @@ export const generateBasket = () => {
   const basketFooter = document.createElement("div");
   basketFooter.setAttribute("class", "basket-footer");
 
+  const footerPrice = document.createElement("div");
+  footerPrice.setAttribute("class", "footer-price");
+
   const priceLabel = document.createElement("h2");
   priceLabel.textContent = "Total Price";
 
   const priceAmount = document.createElement("h2");
   priceAmount.textContent = `$${getTotalPrice()}`;
 
-  basketFooter.appendChild(priceLabel);
-  basketFooter.appendChild(priceAmount);
+  footerPrice.appendChild(priceLabel);
+  footerPrice.appendChild(priceAmount);
+
+  const confirmButton = document.createElement("button");
+  confirmButton.setAttribute("class", "button-primary");
+  confirmButton.textContent = "Order";
+
+  confirmButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.location.href = "../orderForm/index.html";
+  });
+
+  basketFooter.appendChild(footerPrice);
+  basketFooter.appendChild(confirmButton);
 
   basketHeader.appendChild(basketTitle);
   basketHeader.appendChild(closeBasketButton);
@@ -56,7 +71,6 @@ export const generateBasket = () => {
   basketItems.map((item) => {
     const basketCard = document.createElement("div");
     basketCard.setAttribute("class", "basket-card");
-    console.log(item);
 
     const cardHeader = document.createElement("div");
     cardHeader.setAttribute("class", "card-header");

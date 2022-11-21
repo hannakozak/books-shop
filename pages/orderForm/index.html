@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Books Shop</title>
+    <link rel="stylesheet" href="../../assets/style/base.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/23e637380e.js" crossorigin="anonymous"></script>
+    <script src="./script.js" type="module" defer></script>
+  </head>
+  <body id="order-page">
+    <header></header>
+    <main>
+      <div class="form-wrapper">
+        <h2>Shipping Details</h2>
+        <form action="" class="order-form" id="order-form">
+          <fieldset>
+            <div class="deskop-row">
+              <div class="form-field">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" required />
+                <span class="name-error error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="surname">Surname: </label>
+                <input type="text" name="surname" id="surname" required />
+                <span class="surname-error error-message" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="delivery-date">Delivery Date: </label>
+              <input type="date" name="delivery-date" id="delivery-date" required />
+              <span class="date-error error-message" aria-live="polite"></span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Address</legend>
+            <div class="form-field">
+              <label for="street">Street: </label>
+              <input type="text" name="street" id="street" required />
+              <span class="street-error error-message" aria-live="polite"></span>
+            </div>
+            <div class="deskop-row">
+              <div class="form-field">
+                <label for="house-number">House number: </label>
+                <input type="number" name="house-number" id="house-number" required />
+                <span class="house-error error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="flat-number">Flat number: </label>
+                <input type="text" name="flat-number" id="flat-number" required />
+                <span class="flat-error error-message" aria-live="polite"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Choose the payment type</legend>
+            <input type="radio" id="cash" name="payment" value="cash" required checked />
+            <label for="cash">Cash</label>
+            <input type="radio" id="card" name="payment" value="card" />
+            <label for="card">Card</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Choose 2 gifts (optional)</legend>
+            <div>
+              <input type="checkbox" id="gift" name="gift" />
+              <label for="gift">pack as a gift</label>
+            </div>
+            <div>
+              <input type="checkbox" id="postcard" name="postcard" />
+              <label for="postcard">add postcard</label>
+            </div>
+            <div>
+              <input type="checkbox" id="discount" name="discount" />
+              <label for="discount">provide 2% discount to the next time</label>
+            </div>
+            <div>
+              <input type="checkbox" id="pen" name="pen" />
+              <label for="pen">branded pen or pencil</label>
+            </div>
+          </fieldset>
+          <button type="submit" class="button-primary" id="submit-button">Order</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
