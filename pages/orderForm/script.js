@@ -141,7 +141,7 @@ streetInput.addEventListener("blur", () => validateStreetInput());
 houseInput.addEventListener("blur", () => validateHouseInput());
 flatInput.addEventListener("blur", () => validateFlatInput());
 
-const submitForm = (event) => {
+const submitForm = async (event) => {
   event.preventDefault();
   const data = [
     {
@@ -152,8 +152,8 @@ const submitForm = (event) => {
       flat: flatInput.value,
     },
   ];
-  localStorage.setItem("data", JSON.stringify(data));
-  const modal = summaryModal();
+
+  const modal = summaryModal(data);
   modal.style.display = "block";
   form.appendChild(modal);
 };

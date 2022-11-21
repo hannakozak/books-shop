@@ -1,6 +1,4 @@
-let data = JSON.parse(window.localStorage.getItem("data")) || undefined;
-
-export const summaryModal = () => {
+export const summaryModal = (data) => {
   const modalOverlay = document.createElement("div");
   modalOverlay.setAttribute("class", "modal-overlay");
 
