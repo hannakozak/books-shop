@@ -1,4 +1,4 @@
-let data = JSON.parse(window.localStorage.getItem("data")) || [];
+let data = JSON.parse(window.localStorage.getItem("data")) || undefined;
 
 export const summaryModal = () => {
   const modalOverlay = document.createElement("div");
@@ -28,7 +28,9 @@ export const summaryModal = () => {
   const modalBody = document.createElement("div");
   modalBody.setAttribute("class", "modal-body");
   const description = document.createElement("div");
-  description.textContent = `The delivery address is ${data[0].street} ${data[0].house} flat ${data[0].flat}. Customer ${data[0].name} ${data[0].surname}. `;
+  description.textContent = data
+    ? `The delivery address is ${data[0].street} ${data[0].house} flat ${data[0].flat}. Customer ${data[0].name} ${data[0].surname}. `
+    : "";
 
   modalBody.appendChild(description);
 
