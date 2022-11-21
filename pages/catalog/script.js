@@ -35,7 +35,7 @@ const renderBooks = (data) => {
     title.textContent = book.title;
 
     const image = document.createElement("img");
-    image.setAttribute("src", `${book.imageLink}`);
+    image.setAttribute("src", `../../${book.imageLink}`);
     image.setAttribute("alt", book.title);
     image.setAttribute("class", "book-image");
 
