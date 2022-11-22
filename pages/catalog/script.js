@@ -10,10 +10,8 @@ const addToCard = (book, id) => {
   } else {
     search.quantity += 1;
   }
-  console.log(search);
   localStorage.setItem("order", JSON.stringify(basketItems));
   location.reload();
-  console.log(basketItems);
 };
 
 const fetchBooks = fetch("../../books.json")
@@ -32,6 +30,7 @@ const renderBooks = (data) => {
     const card = document.createElement("div");
     card.setAttribute("class", "card");
     card.setAttribute("id", id);
+    card.setAttribute("draggable", "true");
 
     const title = document.createElement("h2");
     title.textContent = book.title;
@@ -80,6 +79,12 @@ const renderBooks = (data) => {
     card.appendChild(buttonsAction);
 
     fragment.appendChild(card);
+
+    const dragend = (e) => {
+      addToCard(book, id);
+    };
+
+    card.addEventListener("dragend", dragend);
   });
 
   const cardWrapper = document.createElement("div");
@@ -125,6 +130,14 @@ basketNav.appendChild(basketLabel);
 basketNav.appendChild(basketIcon);
 
 const basket = generateBasket();
+const dragEnter = (e) => {
+  e.preventDefault();
+};
+const dragOver = (e) => {
+  e.preventDefault();
+};
+basket.addEventListener("dragenter", dragEnter);
+basket.addEventListener("dragover", dragOver);
 
 basketNav.addEventListener("click", function () {
   basket.style.display = "block";
